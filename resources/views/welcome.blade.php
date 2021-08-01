@@ -40,7 +40,7 @@
         <div class="row">
             <div class="col-md-4">
                 <div class="box">
-                    <a href="contacts.html">
+                    <a href="/contactos">
                         <div class="our-services settings">
                             <div class="icon"> <img src="images/contacts.png"> </div>
                             <h4>Contactos</h4>
