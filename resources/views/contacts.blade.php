@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/contacts.css" />
     <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/table.css" />
+    <link rel="stylesheet" href="css/util.css" />
+
+
+    <link rel="stylesheet" href="css/perfect-scrollbar.css" />
+    <link rel="stylesheet" href="css/select2.min.css" />
+    <link rel="stylesheet" href="css/animate.css" />
+
 </head>
 <body>
 
@@ -21,34 +29,48 @@
 <section>
     <!--for demo wrap-->
     <h1>Contactos</h1>
-    <div class="tbl-header table-responsive">
-        <table>
-            <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nome</th>
-                <th>Data</th>
-                <th>Vizualizar</th>
-                <th>Editar</th>
-                <th>Eliminar</th>
-            </tr>
-            </thead>
-        </table>
+
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table">
+
+                    <div class="row header">
+                        <div class="cell">
+                           ID
+                        </div>
+                        <div class="cell">
+                           Nome
+                        </div>
+                        <div class="cell">
+                            Número
+                        </div>
+                        <div class="cell">
+                            Editar
+                        </div>
+                    </div>
+
+                    @foreach($contacts as $contact)
+                        <div class="row">
+                            <div class="cell" data-title="ID">
+                                {{$contact->id}}
+                            </div>
+                            <div class="cell" data-title="Nome">
+                                {{$contact->nome}}
+                            </div>
+                            <div class="cell" data-title="Numero">
+                                {{$contact->numero}}
+                            </div>
+                            <div class="cell" data-title="Editar">
+                                <a class="bn39" href="/"><span class="bn39span">Editar</span></a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="tbl-content">
-        <table>
-            <tbody>
-            <tr>
-                <td>AAC</td>
-                <td>AUSTRALIAN COMPANY </td>
-                <td>$1.38</td>
-                <td><a class="bn39" href="/"><span class="bn39span">Button</span></a></td>
-                <td><a class="bn39" href="/"><span class="bn39span">Button</span></a></td>
-                <td><a class="bn39" href="/"><span class="bn39span">Button</span></a></td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+
 </section>
 
 <div class="d-flex justify-content-center">
@@ -89,6 +111,8 @@
 
 <!-- JS -->
 <script type="text/javascript" src="js/table.js"></script><!-- jQuery -->
+<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script><!-- jQuery -->
+<script type="text/javascript" src="js/select2.min.js"></script><!-- jQuery -->
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Popper JS -->
