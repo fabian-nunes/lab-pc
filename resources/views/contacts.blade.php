@@ -21,15 +21,20 @@
 </head>
 <body>
 
+
+@if (session('alert'))
+    <span onload="alert('asd')"></span>
+@endif
+
 <div class="containerN blue circleBehind">
     <a class="effect">REPARAÇÕES</a>
-    <a href="index.html" class="effectI"><img src="images/logoN.png" alt=""></a>
+    <a href="/" class="effectI"><img src="images/logoN.png" alt=""></a>
     <a class="effect">MATERIAL</a>
 </div>
 
 <section>
     <!--for demo wrap-->
-    <h1>Contactos</h1>
+    <h1>Contactos<a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalAddForm"><button class="bn632-hover bn18">Adicionar</button></a></h1>
 
     <div class="limiter">
         <div class="container-table100">
@@ -72,20 +77,18 @@
             </div>
         </div>
     </div>
-
 </section>
 
 <div class="d-flex justify-content-center">
-    <a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalAddForm"><button class="bn632-hover bn18">Adicionar</button></a>
+    {!! $contacts->links() !!}
 </div>
-
 
 <div class="modal fade" id="modalAddForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-dark">
             <div class="modal-header">
                 <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
-                    <ion-icon name="close-circle-outline" color="danger"></ion-icon>
+                    <ion-icon name="close-circle-outline" color="danger" size="large"></ion-icon>
                 </button>
             </div>
             <div class="modal-body p-4 p-md-5">

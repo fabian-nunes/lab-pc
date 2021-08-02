@@ -4,21 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use Illuminate\Support\Facades\DB;
 
 class ContactController extends Controller
 {
     public function index() {
-        $first = request('start');
-        $last  = request('last');
 
-        if ($first == null) {
-            $first = 1;
-            $last = 10;
-        }
-
-        $contact = Contact::where([
-            ['id', '>=', $first]
-        ])->take(10)->get();
+        $contact = Contact::simplePaginate(10);
 
         return view('contacts', ['contacts' => $contact]);
     }
@@ -35,7 +27,7 @@ class ContactController extends Controller
             $contact->save();
         }
 
-        return redirect('/contactos');
+        return redirect('/contactos')->with('alert', 'Deleted!');
     }
 
     public function destroy() {

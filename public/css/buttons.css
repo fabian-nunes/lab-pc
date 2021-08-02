@@ -73,3 +73,26 @@
     );
     box-shadow: 0 4px 15px 0 rgba(49, 196, 190, 0.75);
 }
+
+
+.bn632-hover.bn26 {
+    background-image: linear-gradient(
+        to right,
+        #25aae1,
+        #4481eb,
+        #04befe,
+        #3f86ed
+    );
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+}
+
+.bn632-hover.bn25 {
+    background-image: linear-gradient(
+        to right,
+        #29323c,
+        #485563,
+        #2b5876,
+        #4e4376
+    );
+    box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
+}
