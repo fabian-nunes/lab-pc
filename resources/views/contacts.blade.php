@@ -63,7 +63,7 @@
                                 {{$contact->numero}}
                             </div>
                             <div class="cell" data-title="Editar">
-                                <a class="bn39" href="/"><span class="bn39span">Editar</span></a>
+                                <a class="bn39" href="" data-toggle="modal" data-target="#modalEditForm"><span class="bn39span">Editar</span></a>
                             </div>
                         </div>
                     @endforeach
@@ -109,6 +109,46 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalEditForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <form name="contactF" action="/contactos" class="login-form" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <div class="form-group">
+                        <button type="submit"  class="d-flex align-items-center justify-content-center mt-1">
+                            <ion-icon name="trash" color="danger" size="large"></ion-icon>
+                        </button>
+                    </div>
+                </form>
+                <button type="button" class="close d-flex align-items-center justify-content-center mt-1" data-dismiss="modal" aria-label="Close">
+                    <ion-icon name="close-circle-outline" color="danger" size="large"></ion-icon>
+                </button>
+            </div>
+            <div class="modal-body p-4 p-md-5">
+                <div class="icon d-flex align-items-center justify-content-center">
+                    <ion-icon name="person" color="danger"></ion-icon>
+                </div>
+                <h3 class="text-center mb-4 text-white">Editar Contacto</h3>
+                <form name="contactF" action="/contactos" class="login-form" onsubmit="return validateContact()" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <input type="text" name="cName" class="form-control rounded-left" placeholder="Nome">
+                    </div>
+                    <div class="form-group d-flex">
+                        <input type="number" name="cNumber" class="form-control rounded-left" placeholder="Nº Telemóvel">
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="form-control btn btn-primary rounded submit px-3">Guardar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 </body>
 
 <!-- JS -->
@@ -126,4 +166,5 @@
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </html>

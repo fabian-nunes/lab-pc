@@ -20,6 +20,7 @@ Route::get('/', function () {
 
 Route::get('/contactos', [ContactController::class, 'index']);
 Route::post('/contactos', [ContactController::class, 'store']);
+Route::delete('contactos/{id}', [ContactController::class, 'destroy']);
 
 Route::get('/test', function () {
     return view('test');

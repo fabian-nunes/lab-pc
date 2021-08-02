@@ -37,4 +37,11 @@ class ContactController extends Controller
 
         return redirect('/contactos');
     }
+
+    public function destroy($id) {
+        $contact = Contact::findOrFail($id);
+        $contact->delete();
+
+        return redirect('/contactos');
+    }
 }
