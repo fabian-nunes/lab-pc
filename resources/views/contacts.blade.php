@@ -63,7 +63,8 @@
                                 {{$contact->numero}}
                             </div>
                             <div class="cell" data-title="Editar">
-                                <a class="bn39" href="" data-toggle="modal" data-target="#modalEditForm"><span class="bn39span">Editar</span></a>
+                                <a class="bn39" href="" data-toggle="modal" data-target="#modalEditForm" data-id="{{$contact->id}}"
+                                   data-name="{{$contact->nome}}" data-number="{{$contact->numero}}"><span class="bn39span">Editar</span></a>
                             </div>
                         </div>
                     @endforeach
@@ -118,6 +119,7 @@
                     @method('DELETE')
                     <div class="form-group">
                         <button type="submit"  class="d-flex align-items-center justify-content-center mt-1">
+                            <input type="hidden" name="idC" id="idD">
                             <ion-icon name="trash" color="danger" size="large"></ion-icon>
                         </button>
                     </div>
@@ -131,16 +133,17 @@
                     <ion-icon name="person" color="danger"></ion-icon>
                 </div>
                 <h3 class="text-center mb-4 text-white">Editar Contacto</h3>
-                <form name="contactF" action="/contactos" class="login-form" onsubmit="return validateContact()" method="POST">
+                <form name="contactFE" action="/contactos" class="login-form" onsubmit="return validateEContact()" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <input type="text" name="cName" class="form-control rounded-left" placeholder="Nome">
+                        <input type="text" name="cNameE" id="mName" class="form-control rounded-left" placeholder="Nome">
                     </div>
                     <div class="form-group d-flex">
-                        <input type="number" name="cNumber" class="form-control rounded-left" placeholder="Nº Telemóvel">
+                        <input type="number" name="cNumberE" id="mNumber" class="form-control rounded-left" placeholder="Nº Telemóvel">
                     </div>
                     <div class="form-group">
+                        <input type="hidden" name="idC" id="idE">
                         <button type="submit" class="form-control btn btn-primary rounded submit px-3">Guardar</button>
                     </div>
                 </form>
@@ -151,11 +154,6 @@
 
 </body>
 
-<!-- JS -->
-<script type="text/javascript" src="js/table.js"></script><!-- jQuery -->
-<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
-<script type="text/javascript" src="js/select2.min.js"></script>
-<script type="text/javascript" src="js/forms.js"></script>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Popper JS -->
@@ -166,5 +164,11 @@
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script type="text/javascript" src="js/table.js"></script><!-- jQuery -->
+<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="js/select2.min.js"></script>
+<script type="text/javascript" src="js/forms.js"></script>
+<script type="text/javascript" src="js/modal.js"></script>
 
 </html>
