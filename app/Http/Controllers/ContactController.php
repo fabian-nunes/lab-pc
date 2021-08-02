@@ -22,4 +22,19 @@ class ContactController extends Controller
 
         return view('contacts', ['contacts' => $contact]);
     }
+
+    public function store() {
+
+        $name = \request('cName');
+        $number = \request('cNumber');
+
+        if ($name != "" && $number != "" && strlen($number) == 9) {
+            $contact = new Contact();
+            $contact->nome = $name;
+            $contact->numero = $number;
+            $contact->save();
+        }
+
+        return redirect('/contactos');
+    }
 }

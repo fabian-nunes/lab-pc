@@ -19,6 +19,7 @@ Route::get('/', function () {
 });
 
 Route::get('/contactos', [ContactController::class, 'index']);
+Route::post('/contactos', [ContactController::class, 'store']);
 
 Route::get('/test', function () {
     return view('test');

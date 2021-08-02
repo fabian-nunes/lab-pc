@@ -92,7 +92,8 @@
                     <ion-icon name="person" color="danger"></ion-icon>
                 </div>
                 <h3 class="text-center mb-4 text-white">Adicionar Contacto</h3>
-                <form name="contactF" action="#" class="login-form" onsubmit="return validateContact()" method="POST">
+                <form name="contactF" action="/contactos" class="login-form" onsubmit="return validateContact()" method="POST">
+                    @csrf
                     <div class="form-group">
                         <input type="text" name="cName" class="form-control rounded-left" placeholder="Nome">
                     </div>
