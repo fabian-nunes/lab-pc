@@ -16,7 +16,9 @@ class ContactController extends Controller
             $last = 10;
         }
 
-        $contact = Contact::all();
+        $contact = Contact::where([
+            ['id', '>=', $first]
+        ])->take(10)->get();
 
         return view('contacts', ['contacts' => $contact]);
     }

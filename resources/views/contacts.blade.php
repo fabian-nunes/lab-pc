@@ -8,6 +8,7 @@
 
     <link rel="stylesheet" href="css/navbar.css" />
     <link rel="stylesheet" href="css/contacts.css" />
+    <link rel="stylesheet" href="css/buttons.css" />
     <link rel="stylesheet" href="css/modal.css" />
     <link rel="stylesheet" href="css/table.css" />
     <link rel="stylesheet" href="css/util.css" />
@@ -91,12 +92,12 @@
                     <ion-icon name="person" color="danger"></ion-icon>
                 </div>
                 <h3 class="text-center mb-4 text-white">Adicionar Contacto</h3>
-                <form action="#" class="login-form">
+                <form name="contactF" action="#" class="login-form" onsubmit="return validateContact()" method="POST">
                     <div class="form-group">
-                        <input type="text" class="form-control rounded-left" placeholder="Nome">
+                        <input type="text" name="cName" class="form-control rounded-left" placeholder="Nome">
                     </div>
                     <div class="form-group d-flex">
-                        <input type="number" class="form-control rounded-left" placeholder="Nº Telemóvel">
+                        <input type="number" name="cNumber" class="form-control rounded-left" placeholder="Nº Telemóvel">
                     </div>
                     <div class="form-group">
                         <button type="submit" class="form-control btn btn-primary rounded submit px-3">Guardar</button>
@@ -111,8 +112,9 @@
 
 <!-- JS -->
 <script type="text/javascript" src="js/table.js"></script><!-- jQuery -->
-<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script><!-- jQuery -->
-<script type="text/javascript" src="js/select2.min.js"></script><!-- jQuery -->
+<script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+<script type="text/javascript" src="js/select2.min.js"></script>
+<script type="text/javascript" src="js/forms.js"></script>
 <!-- jQuery library -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <!-- Popper JS -->
@@ -122,4 +124,5 @@
 <script src="https://kit.fontawesome.com/571726e370.js" crossorigin="anonymous"></script>
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </html>
