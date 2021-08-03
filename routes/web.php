@@ -23,6 +23,8 @@ Route::post('/contactos', [ContactController::class, 'store']);
 Route::delete('/contactos', [ContactController::class, 'destroy']);
 Route::put('/contactos', [ContactController::class, 'update']);
 
+Route::get('/encomendas', [\App\Http\Controllers\OrderController::class, 'index']);
+
 Route::get('/test', function () {
     return view('test');
 });

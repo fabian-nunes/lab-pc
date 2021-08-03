@@ -27,7 +27,7 @@ class ContactController extends Controller
             $contact->save();
         }
 
-        return redirect('/contactos')->with('alert', 'Deleted!');
+        return redirect('/contactos');
     }
 
     public function destroy() {

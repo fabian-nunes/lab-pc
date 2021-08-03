@@ -96,3 +96,9 @@
     );
     box-shadow: 0 4px 15px 0 rgba(45, 54, 65, 0.75);
 }
+
+.roundC {
+    height: 60px; !important;
+    width: 60px; !important;
+    border-radius: 50%; !important;
+}

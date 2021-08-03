@@ -62,7 +62,7 @@
                 <div class="box">
                     <div class="our-services database">
                         <div class="icon"> <img src="images/package.png"> </div>
-                        <h4>Material</h4>
+                        <h4>Encomendas</h4>
                         <p>Gerir Material Encomendado</p>
                     </div>
                 </div>

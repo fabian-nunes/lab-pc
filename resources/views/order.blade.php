@@ -28,8 +28,8 @@
 </div>
 
 <section>
-    <!--for demo wrap-->
-    <h1>Contactos<a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalAddForm"><button class="bn632-hover bn18">Adicionar</button></a></h1>
+
+    <h1>Encomendas<a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalAddForm"><button class="bn632-hover bn18 roundC"><i class="fas fa-plus" style="font-size: 30px"></i></button></a></h1>
 
     <div class="limiter">
         <div class="container-table100">
@@ -44,7 +44,7 @@
                             Nome
                         </div>
                         <div class="cell">
-                            Número
+                            Data
                         </div>
                         <div class="cell">
                             Editar
