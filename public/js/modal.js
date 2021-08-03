@@ -26,3 +26,14 @@ $('#modalCompleteOForm').on('show.bs.modal', function (event) {
 
     document.getElementById("completeOrderForm").action = "/encomendas/"+id;
 });
+
+$('#modalEditOForm').on('show.bs.modal', function (event) {
+    let id = $(event.relatedTarget).data('id');
+    let price = $(event.relatedTarget).data('price');
+    let obs = $(event.relatedTarget).data('obs');
+
+    document.getElementById("idOE").value = id;
+    document.getElementById("idDO").value = id;
+    document.getElementById("oPriceE").value = price;
+    document.getElementById("oObsE").value = obs;
+});

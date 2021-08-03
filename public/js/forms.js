@@ -146,3 +146,41 @@ function validateOrder() {
 function checkNumber(value) {
     return /^\d*\.?\d*$/.test(value);
 }
+
+
+function validateOrderE() {
+    let number = document.forms["contactFE"]["oPriceE"].value;
+    if (number == "") {
+        Swal.fire({
+            icon: 'error',
+            title: '<span style="color: white">O campo <span style="color: red">Preço</span> não pode estar vazio</span>',
+            width: 600,
+            padding: '3em',
+            background: '#2C394B',
+            backdrop: `
+                rgba(0,0,123,0.4)
+                url("/images/nyan-cat.gif")
+                left top
+                no-repeat
+              `
+        });
+        return false;
+    }
+
+    if (!checkNumber(number)) {
+        Swal.fire({
+            icon: 'error',
+            title: '<span style="color: white">O campo <span style="color: red">Preço</span> não pode conter letras</span>',
+            width: 600,
+            padding: '3em',
+            background: '#2C394B',
+            backdrop: `
+                rgba(0,0,123,0.4)
+                url("/images/nyan-cat.gif")
+                left top
+                no-repeat
+              `
+        });
+        return false;
+    }
+}

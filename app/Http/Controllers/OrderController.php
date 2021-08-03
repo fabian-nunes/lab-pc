@@ -41,4 +41,28 @@ class OrderController extends Controller
         }
         return redirect('/encomendas');
     }
+
+    public function update() {
+        $id = \request('idOE');
+        $order = Order::findOrFail($id);
+
+        $price = \request('oPriceE');
+        $obs = \request('oObsE');
+
+        if ($price != "" && $obs != "" && is_numeric($price)) {
+            $order->preco = $price;
+            $order->obs = $obs;
+            $order->save();
+        }
+
+        return redirect('/encomendas');
+    }
+
+    public function destroy() {
+        $id = \request('idDO');
+        $order = Order::findOrFail($id);
+        $order->delete();
+
+        return redirect('/encomendas');
+    }
 }

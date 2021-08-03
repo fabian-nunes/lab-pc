@@ -63,7 +63,7 @@
                             </div>
                             <div class="cell" data-title="Editar">
                                 <a class="bn39" href="" data-toggle="modal" data-target="#modalEditOForm" data-id="{{$order->id}}"
-                                   data-price="{{$order->preco}}" data-create="{{$order->created_at}}"><span class="bn39span">Editar</span></a>
+                                   data-price="{{$order->preco}}" data-obs="{{$order->obs}}"><span class="bn39span">Editar</span></a>
                             </div>
                             <div class="cell" data-title="Completar">
                                 <a class="bn31" href="" data-toggle="modal" data-target="#modalCompleteOForm" data-id="{{$order->id}}"><span class="bn31span"><i class="fas fa-check"></i></span></a>
@@ -163,12 +163,12 @@
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-dark">
             <div class="modal-header">
-                <form name="contactF" action="/contactos" class="login-form" method="POST">
+                <form name="contactF" action="/encomendas" class="login-form" method="POST">
                     @csrf
                     @method('DELETE')
                     <div class="form-group">
                         <button type="submit"  class="d-flex align-items-center justify-content-center mt-1">
-                            <input type="hidden" name="idC" id="idD">
+                            <input type="hidden" name="idDO" id="idDO">
                             <ion-icon name="trash" color="danger" size="large"></ion-icon>
                         </button>
                     </div>
@@ -179,20 +179,20 @@
             </div>
             <div class="modal-body p-4 p-md-5">
                 <div class="icon d-flex align-items-center justify-content-center">
-                    <ion-icon name="person" color="danger"></ion-icon>
+                    <ion-icon name="archive" color="danger"></ion-icon>
                 </div>
-                <h3 class="text-center mb-4 text-white">Editar Contacto</h3>
-                <form name="contactFE" action="/contactos" class="login-form" onsubmit="return validateEContact()" method="POST">
+                <h3 class="text-center mb-4 text-white">Editar Encomenda</h3>
+                <form name="contactFE" action="/encomendas" class="login-form" onsubmit="return validateOrderE()" method="POST">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <input type="text" name="oPriceE" id="oPriceE" class="form-control rounded-left" placeholder="Nome">
+                        <input type="text" name="oPriceE" id="oPriceE" class="form-control rounded-left" placeholder="Preço">
                     </div>
                     <div class="form-group d-flex">
                         <textarea name="oObsE" id="oObsE" class="form-control rounded-left" placeholder="Observações"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="hidden" name="idO" id="idOE">
+                        <input type="hidden" name="idOE" id="idOE">
                         <button type="submit" class="form-control btn btn-primary rounded submit px-3">Guardar</button>
                     </div>
                 </form>
