@@ -30,4 +30,15 @@ class OrderController extends Controller
 
         return redirect('/encomendas');
     }
+
+    public function complete($id) {
+
+        $order = Order::findOrFail($id);
+
+        if ($order->estado == 0) {
+            $order->estado = 1;
+            $order->save();
+        }
+        return redirect('/encomendas');
+    }
 }

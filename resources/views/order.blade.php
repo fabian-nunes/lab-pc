@@ -44,27 +44,29 @@
                             Preço €
                         </div>
                         <div class="cell">
-                            Data
+                            Editar
                         </div>
                         <div class="cell">
-                            Editar
+                            Completar
                         </div>
                     </div>
 
                     @foreach($orders as $order)
-                        <div class="row" onclick="alert('lol')">
-                            <div class="cell" data-title="ID">
+                        <div class="row">
+                            <div class="cell" data-title="ID" data-toggle="modal" data-target="#modalViewOForm" data-id="{{$order->id}}" data-price="{{$order->preco}}"
+                                 data-create="{{$order->created_at}}" data-obs="{{$order->obs}}">
                                 {{$order->id}}
                             </div>
-                            <div class="cell" data-title="Preço €">
+                            <div class="cell" data-title="Preço €" data-toggle="modal" data-target="#modalViewOForm" data-id="{{$order->id}}" data-price="{{$order->preco}}"
+                                 data-create="{{$order->created_at}}" data-obs="{{$order->obs}}">
                                 {{$order->preco}} €
                             </div>
-                            <div class="cell" data-title="Data">
-                                {{$order->created_at}}
-                            </div>
                             <div class="cell" data-title="Editar">
-                                <a class="bn39" href="" data-toggle="modal" data-target="#modalEditForm" data-id="{{$order->id}}"
-                                   data-name="{{$order->nome}}" data-number="{{$order->created_at}}"><span class="bn39span">Editar</span></a>
+                                <a class="bn39" href="" data-toggle="modal" data-target="#modalEditOForm" data-id="{{$order->id}}"
+                                   data-price="{{$order->preco}}" data-create="{{$order->created_at}}"><span class="bn39span">Editar</span></a>
+                            </div>
+                            <div class="cell" data-title="Completar">
+                                <a class="bn31" href="" data-toggle="modal" data-target="#modalCompleteOForm" data-id="{{$order->id}}"><span class="bn31span"><i class="fas fa-check"></i></span></a>
                             </div>
                         </div>
                     @endforeach
@@ -77,7 +79,7 @@
         {!! $orders->links() !!}
     </div>
 
-    <br><br>
+    <br><br><br>
 
     <h3 class="text-center text-white">Recebidas</h3>
     <div class="limiter">
@@ -157,7 +159,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="modalEditForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modalEditOForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-dark">
             <div class="modal-header">
@@ -184,13 +186,13 @@
                     @csrf
                     @method('PUT')
                     <div class="form-group">
-                        <input type="text" name="cNameE" id="mName" class="form-control rounded-left" placeholder="Nome">
+                        <input type="text" name="oPriceE" id="oPriceE" class="form-control rounded-left" placeholder="Nome">
                     </div>
                     <div class="form-group d-flex">
-                        <input type="number" name="cNumberE" id="mNumber" class="form-control rounded-left" placeholder="Nº Telemóvel">
+                        <textarea name="oObsE" id="oObsE" class="form-control rounded-left" placeholder="Observações"></textarea>
                     </div>
                     <div class="form-group">
-                        <input type="hidden" name="idC" id="idE">
+                        <input type="hidden" name="idO" id="idOE">
                         <button type="submit" class="form-control btn btn-primary rounded submit px-3">Guardar</button>
                     </div>
                 </form>
@@ -199,6 +201,61 @@
     </div>
 </div>
 
+
+<div class="modal fade" id="modalViewOForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                    <ion-icon name="close-circle-outline" color="danger" size="large"></ion-icon>
+                </button>
+            </div>
+            <div class="modal-body p-4 p-md-5">
+                <div class="icon d-flex align-items-center justify-content-center">
+                    <ion-icon name="archive" color="danger"></ion-icon>
+                </div>
+                <h3 class="text-center mb-4 text-white">Encomenda <span id="idOrder"></span></h3>
+                <form name="contactFOV" action="/encomendas" class="login-form">
+                    <div class="form-group d-flex">
+                        <input type="text" id="oVPrice" name="oVPrice" class="form-control rounded-left" placeholder="Preço" readonly>
+                    </div>
+                    <div class="form-group d-flex">
+                        <input type="text" id="oVDate" name="oVDate" class="form-control rounded-left" placeholder="Data" readonly>
+                    </div>
+                    <div class="form-group d-flex">
+                        <textarea id="oVObs" name="oVObs" class="form-control rounded-left" placeholder="Observações" readonly></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="modalCompleteOForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <button type="button" class="close d-flex align-items-center justify-content-center mt-1" data-dismiss="modal" aria-label="Close">
+                    <ion-icon name="close-circle-outline" color="danger" size="large"></ion-icon>
+                </button>
+            </div>
+            <div class="modal-body p-4 p-md-5">
+                <div class="icon d-flex align-items-center justify-content-center">
+                    <ion-icon name="archive" color="danger"></ion-icon>
+                </div>
+                <h3 class="text-center mb-4 text-white">Confirmar Encomenda</h3>
+                <form name="contactFE" action="/encomendas" id="completeOrderForm" class="login-form" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sim</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
 
 <!-- jQuery library -->

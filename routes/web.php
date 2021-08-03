@@ -26,6 +26,7 @@ Route::put('/contactos', [ContactController::class, 'update']);
 
 Route::get('/encomendas', [OrderController::class, 'index']);
 Route::post('/encomendas', [OrderController::class, 'store']);
+Route::put('/encomendas/{id}', [OrderController::class, 'complete']);
 
 Route::get('/test', function () {
     return view('test');
