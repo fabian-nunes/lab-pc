@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Order;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -9,7 +10,24 @@ class OrderController extends Controller
 
     public function index() {
 
-        return view('order');
+        $orderN = Order::where('estado', 0)->simplePaginate(10);
+        $orderR = Order::where('estado', 1)->simplePaginate(10);
+
+        return view('order', ['orders' => $orderN, 'ordersR' => $orderR]);
     }
 
+    public function store() {
+
+        $price = \request('oPrice');
+        $obs = \request('oObs');
+
+        if ($price != "" && $obs != "" && is_numeric($price)) {
+            $order = new Order();
+            $order->preco = $price;
+            $order->obs = $obs;
+            $order->save();
+        }
+
+        return redirect('/encomendas');
+    }
 }

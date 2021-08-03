@@ -29,8 +29,8 @@
 
 <section>
 
-    <h1>Encomendas<a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalAddForm"><button class="bn632-hover bn18 roundC"><i class="fas fa-plus" style="font-size: 30px"></i></button></a></h1>
-
+    <h1>Encomendas<a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalAddOForm"><button class="bn632-hover bn18 roundC"><i class="fas fa-plus" style="font-size: 30px"></i></button></a></h1>
+    <h3 class="text-center text-white">Por receber</h3>
     <div class="limiter">
         <div class="container-table100">
             <div class="wrap-table100">
@@ -38,10 +38,10 @@
 
                     <div class="row header">
                         <div class="cell">
-                            ID
+                            NºEncomenda
                         </div>
                         <div class="cell">
-                            Nome
+                            Preço €
                         </div>
                         <div class="cell">
                             Data
@@ -51,20 +51,20 @@
                         </div>
                     </div>
 
-                    @foreach($contacts as $contact)
-                        <div class="row">
+                    @foreach($orders as $order)
+                        <div class="row" onclick="alert('lol')">
                             <div class="cell" data-title="ID">
-                                {{$contact->id}}
+                                {{$order->id}}
                             </div>
-                            <div class="cell" data-title="Nome">
-                                {{$contact->nome}}
+                            <div class="cell" data-title="Preço €">
+                                {{$order->preco}} €
                             </div>
-                            <div class="cell" data-title="Numero">
-                                {{$contact->numero}}
+                            <div class="cell" data-title="Data">
+                                {{$order->created_at}}
                             </div>
                             <div class="cell" data-title="Editar">
-                                <a class="bn39" href="" data-toggle="modal" data-target="#modalEditForm" data-id="{{$contact->id}}"
-                                   data-name="{{$contact->nome}}" data-number="{{$contact->numero}}"><span class="bn39span">Editar</span></a>
+                                <a class="bn39" href="" data-toggle="modal" data-target="#modalEditForm" data-id="{{$order->id}}"
+                                   data-name="{{$order->nome}}" data-number="{{$order->created_at}}"><span class="bn39span">Editar</span></a>
                             </div>
                         </div>
                     @endforeach
@@ -72,13 +72,62 @@
             </div>
         </div>
     </div>
+
+    <div class="d-flex justify-content-center">
+        {!! $orders->links() !!}
+    </div>
+
+    <br><br>
+
+    <h3 class="text-center text-white">Recebidas</h3>
+    <div class="limiter">
+        <div class="container-table100">
+            <div class="wrap-table100">
+                <div class="table">
+
+                    <div class="row header">
+                        <div class="cell">
+                            NºEncomenda
+                        </div>
+                        <div class="cell">
+                            Preço €
+                        </div>
+                        <div class="cell">
+                            Data
+                        </div>
+                        <div class="cell">
+                            Editar
+                        </div>
+                    </div>
+
+                    @foreach($ordersR as $order)
+                        <div class="row">
+                            <div class="cell" data-title="ID">
+                                {{$order->id}}
+                            </div>
+                            <div class="cell" data-title="Nome">
+                                {{$order->nome}}
+                            </div>
+                            <div class="cell" data-title="Data">
+                                {{$order->created_at}}
+                            </div>
+                            <div class="cell" data-title="Editar">
+                                <a class="bn39" href="" data-toggle="modal" data-target="#modalEditForm" data-id="{{$order->id}}"
+                                   data-name="{{$order->nome}}" data-number="{{$order->created_at}}"><span class="bn39span">Editar</span></a>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="d-flex justify-content-center">
+        {!! $ordersR->links() !!}
+    </div>
 </section>
 
-<div class="d-flex justify-content-center">
-    {!! $contacts->links() !!}
-</div>
-
-<div class="modal fade" id="modalAddForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modalAddOForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-dark">
             <div class="modal-header">
@@ -88,16 +137,16 @@
             </div>
             <div class="modal-body p-4 p-md-5">
                 <div class="icon d-flex align-items-center justify-content-center">
-                    <ion-icon name="person" color="danger"></ion-icon>
+                    <ion-icon name="archive" color="danger"></ion-icon>
                 </div>
-                <h3 class="text-center mb-4 text-white">Adicionar Contacto</h3>
-                <form name="contactF" action="/contactos" class="login-form" onsubmit="return validateContact()" method="POST">
+                <h3 class="text-center mb-4 text-white">Adicionar Encomenda</h3>
+                <form name="contactFO" action="/encomendas" class="login-form" onsubmit="return validateOrder()" method="POST">
                     @csrf
-                    <div class="form-group">
-                        <input type="text" name="cName" class="form-control rounded-left" placeholder="Nome">
+                    <div class="form-group d-flex">
+                        <input type="text" name="oPrice" class="form-control rounded-left" placeholder="Preço">
                     </div>
                     <div class="form-group d-flex">
-                        <input type="number" name="cNumber" class="form-control rounded-left" placeholder="Nº Telemóvel">
+                        <textarea name="oObs" class="form-control rounded-left" placeholder="Observações"></textarea>
                     </div>
                     <div class="form-group">
                         <button type="submit" class="form-control btn btn-primary rounded submit px-3">Guardar</button>

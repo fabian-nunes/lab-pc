@@ -60,11 +60,13 @@
             </div>
             <div class="col-md-4">
                 <div class="box">
-                    <div class="our-services database">
-                        <div class="icon"> <img src="images/package.png"> </div>
-                        <h4>Encomendas</h4>
-                        <p>Gerir Material Encomendado</p>
-                    </div>
+                    <a href="/encomendas">
+                        <div class="our-services database">
+                            <div class="icon"> <img src="images/package.png"> </div>
+                            <h4>Encomendas</h4>
+                            <p>Gerir Material Encomendado</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>

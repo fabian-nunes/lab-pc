@@ -16,10 +16,9 @@ class CreateOrdersTable extends Migration
         Schema::create('encomendas', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('nome');
-            $table->tinyInteger('estado');
+            $table->boolean('estado')->default(false);
             $table->integer('preco');
-            $table->multiLineString('obs');
+            $table->string('obs')->nullable();
         });
     }
 
