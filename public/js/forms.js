@@ -105,6 +105,11 @@ function validateEContact() {
 }
 
 function validateOrder() {
+
+    if (priceError) {
+
+    }
+
     let number = document.forms["contactFO"]["oPrice"].value;
     if (number == "") {
         Swal.fire({
@@ -140,11 +145,6 @@ function validateOrder() {
         return false;
     }
 
-}
-
-
-function checkNumber(value) {
-    return /^\d*\.?\d*$/.test(value);
 }
 
 

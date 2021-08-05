@@ -129,9 +129,10 @@
     </div>
 </section>
 
+
 <div class="modal fade" id="modalAddOForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content bg-dark">
+        <div class="modal-content bg-dark"">
             <div class="modal-header">
                 <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
                     <ion-icon name="close-circle-outline" color="danger" size="large"></ion-icon>
@@ -142,16 +143,25 @@
                     <ion-icon name="archive" color="danger"></ion-icon>
                 </div>
                 <h3 class="text-center mb-4 text-white">Adicionar Encomenda</h3>
-                <form name="contactFO" action="/encomendas" class="login-form" onsubmit="return validateOrder()" method="POST">
+                <form name="contactFO" x-data="handler()" action="/encomendas" class="login-form" onsubmit="return validateOrder()" method="POST">
                     @csrf
-                    <div class="form-group d-flex">
-                        <input type="text" name="oPrice" class="form-control rounded-left" placeholder="Preço">
-                    </div>
-                    <div class="form-group d-flex">
-                        <textarea name="oObs" class="form-control rounded-left" placeholder="Observações"></textarea>
+                    <template class="form-group" x-for="(field, index) in fields" :key="index">
+                        <tr>
+                            <td x-text="index + 1"></td>
+                            <td><input x-model="field.name" onkeydown="checkKey()" type="text" name="name[]" class="form-control" placeholder="Nome"></td>
+                            <td><input x-model="field.price" onkeydown="checkKey()" type="text" name="price[]" class="form-control" placeholder="Preço"></td>
+                            <td>
+                                <button type="button" class="btn btn-danger btn-small" @click="removeField(index)">&times;</button>
+                            </td>
+                        </tr>
+                    </template>
+                    <div class="form-group text-center">
+                        <button type="button" class="form-control btn btn-primary rounded submit px-3" @click="addNewField()">Adicionar Peça</button>
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="form-control btn btn-primary rounded submit px-3">Guardar</button>
+                        <input type="hidden" id="total">
+                        <input type="hidden" id="priceT">
+                        <button type="submit" class="form-control btn btn-primary rounded submit px-3" @click="saveForm()">Guardar</button>
                     </div>
                 </form>
             </div>
@@ -268,11 +278,13 @@
 <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="//unpkg.com/alpinejs" defer></script>
 
 <script type="text/javascript" src="js/table.js"></script><!-- jQuery -->
 <script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
 <script type="text/javascript" src="js/select2.min.js"></script>
 <script type="text/javascript" src="js/forms.js"></script>
 <script type="text/javascript" src="js/modal.js"></script>
+<script type="text/javascript" src="js/dynamicInput.js"></script>
 
 </html>

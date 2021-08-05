@@ -17,7 +17,6 @@ class OrderController extends Controller
     }
 
     public function store() {
-
         $price = \request('oPrice');
         $obs = \request('oObs');
 
