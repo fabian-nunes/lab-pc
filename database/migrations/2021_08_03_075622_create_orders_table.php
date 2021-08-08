@@ -18,6 +18,7 @@ class CreateOrdersTable extends Migration
             $table->timestamps();
             $table->boolean('estado')->default(false);
             $table->float('preco');
+            $table->string('pecas');
             $table->string('obs')->nullable();
         });
     }

@@ -44,7 +44,7 @@
                             Preço €
                         </div>
                         <div class="cell">
-                            Editar
+                            Data
                         </div>
                         <div class="cell">
                             Completar
@@ -53,17 +53,14 @@
 
                     @foreach($orders as $order)
                         <div class="row">
-                            <div class="cell" data-title="ID" data-toggle="modal" data-target="#modalViewOForm" data-id="{{$order->id}}" data-price="{{$order->preco}}"
-                                 data-create="{{$order->created_at}}" data-obs="{{$order->obs}}">
+                            <div class="cell" data-title="ID" data-toggle="modal" data-target="#modalViewOForm" data-id="{{$order->id}}" data-pecas="{{$order->pecas}}">
                                 {{$order->id}}
                             </div>
-                            <div class="cell" data-title="Preço €" data-toggle="modal" data-target="#modalViewOForm" data-id="{{$order->id}}" data-price="{{$order->preco}}"
-                                 data-create="{{$order->created_at}}" data-obs="{{$order->obs}}">
+                            <div class="cell" data-title="Preço €" data-toggle="modal" data-target="#modalViewOForm" data-id="{{$order->id}}" data-pecas="{{$order->pecas}}">
                                 {{$order->preco}} €
                             </div>
-                            <div class="cell" data-title="Editar">
-                                <a class="bn39" href="" data-toggle="modal" data-target="#modalEditOForm" data-id="{{$order->id}}"
-                                   data-price="{{$order->preco}}" data-obs="{{$order->obs}}"><span class="bn39span">Editar</span></a>
+                            <div class="cell" data-title="Data" data-toggle="modal" data-target="#modalViewOForm" data-id="{{$order->id}}" data-pecas="{{$order->pecas}}">
+                                {{$order->created_at->format('d-m-Y')}}
                             </div>
                             <div class="cell" data-title="Completar">
                                 <a class="bn31" href="" data-toggle="modal" data-target="#modalCompleteOForm" data-id="{{$order->id}}"><span class="bn31span"><i class="fas fa-check"></i></span></a>
@@ -132,7 +129,7 @@
 
 <div class="modal fade" id="modalAddOForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content bg-dark"">
+        <div class="modal-content bg-dark">
             <div class="modal-header">
                 <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
                     <ion-icon name="close-circle-outline" color="danger" size="large"></ion-icon>
@@ -148,8 +145,8 @@
                     <template class="form-group" x-for="(field, index) in fields" :key="index">
                         <tr>
                             <td x-text="index + 1"></td>
-                            <td><input x-model="field.name" onkeydown="checkKey()" type="text" name="name[]" class="form-control" placeholder="Nome"></td>
-                            <td><input x-model="field.price" onkeydown="checkKey()" type="text" name="price[]" class="form-control" placeholder="Preço"></td>
+                            <td><input x-model="field.name" onkeydown="checkKey()" type="text" name="name[]" class="form-control" placeholder="Nome" required></td>
+                            <td><input x-model="field.price" onkeypress="return isNumberKey(this, event);" type="text" name="price[]" class="form-control" placeholder="Preço" required></td>
                             <td>
                                 <button type="button" class="btn btn-danger btn-small" @click="removeField(index)">&times;</button>
                             </td>
@@ -159,8 +156,8 @@
                         <button type="button" class="form-control btn btn-primary rounded submit px-3" @click="addNewField()">Adicionar Peça</button>
                     </div>
                     <div class="form-group">
-                        <input type="hidden" id="total">
-                        <input type="hidden" id="priceT">
+                        <input type="hidden" id="total" name="total">
+                        <input type="hidden" id="priceT" name="priceT">
                         <button type="submit" class="form-control btn btn-primary rounded submit px-3" @click="saveForm()">Guardar</button>
                     </div>
                 </form>
@@ -169,7 +166,7 @@
     </div>
 </div>
 
-<div class="modal fade" id="modalEditOForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="modalViewOForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content bg-dark">
             <div class="modal-header">
@@ -183,39 +180,6 @@
                         </button>
                     </div>
                 </form>
-                <button type="button" class="close d-flex align-items-center justify-content-center mt-1" data-dismiss="modal" aria-label="Close">
-                    <ion-icon name="close-circle-outline" color="danger" size="large"></ion-icon>
-                </button>
-            </div>
-            <div class="modal-body p-4 p-md-5">
-                <div class="icon d-flex align-items-center justify-content-center">
-                    <ion-icon name="archive" color="danger"></ion-icon>
-                </div>
-                <h3 class="text-center mb-4 text-white">Editar Encomenda</h3>
-                <form name="contactFE" action="/encomendas" class="login-form" onsubmit="return validateOrderE()" method="POST">
-                    @csrf
-                    @method('PUT')
-                    <div class="form-group">
-                        <input type="text" name="oPriceE" id="oPriceE" class="form-control rounded-left" placeholder="Preço">
-                    </div>
-                    <div class="form-group d-flex">
-                        <textarea name="oObsE" id="oObsE" class="form-control rounded-left" placeholder="Observações"></textarea>
-                    </div>
-                    <div class="form-group">
-                        <input type="hidden" name="idOE" id="idOE">
-                        <button type="submit" class="form-control btn btn-primary rounded submit px-3">Guardar</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="modal fade" id="modalViewOForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content bg-dark">
-            <div class="modal-header">
                 <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
                     <ion-icon name="close-circle-outline" color="danger" size="large"></ion-icon>
                 </button>
@@ -227,13 +191,7 @@
                 <h3 class="text-center mb-4 text-white">Encomenda <span id="idOrder"></span></h3>
                 <form name="contactFOV" action="/encomendas" class="login-form">
                     <div class="form-group d-flex">
-                        <input type="text" id="oVPrice" name="oVPrice" class="form-control rounded-left" placeholder="Preço" readonly>
-                    </div>
-                    <div class="form-group d-flex">
-                        <input type="text" id="oVDate" name="oVDate" class="form-control rounded-left" placeholder="Data" readonly>
-                    </div>
-                    <div class="form-group d-flex">
-                        <textarea id="oVObs" name="oVObs" class="form-control rounded-left" placeholder="Observações" readonly></textarea>
+                        <textarea type="text" id="viewOrder" class="form-control rounded-left" placeholder="Preço" readonly></textarea>
                     </div>
                 </form>
             </div>
@@ -258,6 +216,9 @@
                 <form name="contactFE" action="/encomendas" id="completeOrderForm" class="login-form" method="POST">
                     @csrf
                     @method('PUT')
+                    <div class="form-group">
+                        <textarea id="oObs" name="oObs" class="form-control rounded-left" placeholder="Observações Adicionais"></textarea>
+                    </div>
                     <div class="form-group">
                         <button type="submit" class="form-control btn btn-primary rounded submit px-3">Sim</button>
                     </div>

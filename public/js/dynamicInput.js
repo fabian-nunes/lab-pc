@@ -1,4 +1,4 @@
-let priceError = false;
+let inputError = false;
 function handler() {
     return {
         fields: [],
@@ -13,18 +13,26 @@ function handler() {
         },
         saveForm() {
             let pieces = "";
-            let price = "";
-            priceError = false;
+            let price = 0;
+            inputError = false;
+
+            for (let i = 0; i < this.fields.length; i++) {
+                if (checkEmpty(this.fields[i].name) || checkEmpty(this.fields[i].price)) {
+                    inputError = true;
+                    return false;
+                }
+
+                let priceT = parseInt(this.fields[i].price, 10);
+                if (!checkNumber(priceT)) {
+                    inputError = true;
+                    return false;
+                }
+            }
 
             for (let i = 0; i < this.fields.length; i++) {
                 let priceI = parseInt(this.fields[i].price, 10);
-                if (checkNumber(priceI)) {
-                    pieces += this.fields[i].name + this.fields[i].price + "#";
-                    price += priceI;
-                } else {
-                    priceError = true;
-                    return false;
-                }
+                pieces += this.fields[i].name + "-" + this.fields[i].price + "#";
+                price += priceI;
             }
 
             document.getElementById("total").value = pieces;
@@ -54,7 +62,7 @@ function checkKey() {
     var e = event || window.event;  // get event object
     var key = e.keyCode || e.which; // get key cross-browser
 
-    if (key == 51) { //if it is not a number ascii code
+    if (key == 51 || key == 189) { //if it is not a number ascii code
         //Prevent default action, which is inserting character
         if (e.preventDefault) e.preventDefault(); //normal browsers
         e.returnValue = false; //IE
@@ -63,4 +71,25 @@ function checkKey() {
 
 function checkNumber(value) {
     return /^\d*\.?\d*$/.test(value);
+}
+
+function checkEmpty(string) {
+    return (string.length === 0 || !string.trim());
+}
+
+function isNumberKey(txt, evt) {
+    var charCode = (evt.which) ? evt.which : evt.keyCode;
+    if (charCode == 46) {
+        //Check if the text already contains the . character
+        if (txt.value.indexOf('.') === -1) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        if (charCode > 31 &&
+            (charCode < 48 || charCode > 57))
+            return false;
+    }
+    return true;
 }

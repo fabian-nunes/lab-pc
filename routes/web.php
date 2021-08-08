@@ -27,7 +27,6 @@ Route::put('/contactos', [ContactController::class, 'update']);
 Route::get('/encomendas', [OrderController::class, 'index']);
 Route::post('/encomendas', [OrderController::class, 'store']);
 Route::put('/encomendas/{id}', [OrderController::class, 'complete']);
-Route::put('/encomendas', [OrderController::class, 'update']);
 Route::delete('/encomendas', [OrderController::class, 'destroy']);
 
 Route::get('/test', function () {

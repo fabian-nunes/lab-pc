@@ -17,13 +17,13 @@ class OrderController extends Controller
     }
 
     public function store() {
-        $price = \request('oPrice');
-        $obs = \request('oObs');
+        $price = \request('priceT');
+        $names = \request('total');
 
-        if ($price != "" && $obs != "" && is_numeric($price)) {
+        if ($price != "" && $names != "" && is_numeric($price)) {
             $order = new Order();
             $order->preco = $price;
-            $order->obs = $obs;
+            $order->pecas = $names;
             $order->save();
         }
 
@@ -33,27 +33,15 @@ class OrderController extends Controller
     public function complete($id) {
 
         $order = Order::findOrFail($id);
+        $obs = \request('oObs');
 
         if ($order->estado == 0) {
             $order->estado = 1;
+            if ($obs != "") {
+                $order->obs = $obs;
+            }
             $order->save();
         }
-        return redirect('/encomendas');
-    }
-
-    public function update() {
-        $id = \request('idOE');
-        $order = Order::findOrFail($id);
-
-        $price = \request('oPriceE');
-        $obs = \request('oObsE');
-
-        if ($price != "" && $obs != "" && is_numeric($price)) {
-            $order->preco = $price;
-            $order->obs = $obs;
-            $order->save();
-        }
-
         return redirect('/encomendas');
     }
 

@@ -11,14 +11,17 @@ $('#modalEditForm').on('show.bs.modal', function (event) {
 
 $('#modalViewOForm').on('show.bs.modal', function (event) {
     let id = $(event.relatedTarget).data('id');
-    let price = $(event.relatedTarget).data('price');
-    let Sdate = $(event.relatedTarget).data('create');
-    let obs = $(event.relatedTarget).data('obs');
+    document.getElementById("idDO").value = id;
 
-    document.getElementById("idOrder").value = id;
-    document.getElementById("oVPrice").value = price;
-    document.getElementById("oVDate").value = Sdate;
-    document.getElementById("oVObs").value = obs;
+    let pecas = $(event.relatedTarget).data('pecas');
+    let pecasN = pecas.split("#");
+    document.getElementById("viewOrder").value = "";
+    for (let i = 0; i < pecasN.length-1; i++) {
+        let pecasP = pecasN[i].split("-");
+        console.log(pecasN[i]);
+        console.log(pecasP[1]);
+        document.getElementById("viewOrder").value += "-> Peça: " + pecasP[0] + "  Preço: " + pecasP[1] +" €\n";
+    }
 });
 
 $('#modalCompleteOForm').on('show.bs.modal', function (event) {
@@ -27,13 +30,3 @@ $('#modalCompleteOForm').on('show.bs.modal', function (event) {
     document.getElementById("completeOrderForm").action = "/encomendas/"+id;
 });
 
-$('#modalEditOForm').on('show.bs.modal', function (event) {
-    let id = $(event.relatedTarget).data('id');
-    let price = $(event.relatedTarget).data('price');
-    let obs = $(event.relatedTarget).data('obs');
-
-    document.getElementById("idOE").value = id;
-    document.getElementById("idDO").value = id;
-    document.getElementById("oPriceE").value = price;
-    document.getElementById("oObsE").value = obs;
-});
