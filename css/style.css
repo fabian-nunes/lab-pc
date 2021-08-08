@@ -166,7 +166,7 @@ section {
 }
 
 .header.header-scrolled {
-  background: #fff;
+  background: #151414;
   padding: 15px 0;
   box-shadow: 0px 2px 20px rgba(1, 41, 112, 0.1);
 }
@@ -240,7 +240,7 @@ section {
 * Mobile Navigation
 */
 .mobile-nav-toggle {
-  color: #012970;
+  color: #ec1117;
   font-size: 28px;
   cursor: pointer;
   display: none;
@@ -268,7 +268,7 @@ section {
   right: 0;
   left: 0;
   bottom: 0;
-  background: rgba(1, 22, 61, 0.9);
+  background: rgba(130, 5, 8, 0.9);
   transition: 0.3s;
 }
 
@@ -295,47 +295,11 @@ section {
 .navbar-mobile a {
   padding: 10px 20px;
   font-size: 15px;
-  color: #012970;
+  color: #820508;
 }
 
 .navbar-mobile a:hover, .navbar-mobile .active, .navbar-mobile li:hover > a {
-  color: #4154f1;
-}
-
-.navbar-mobile .getstarted {
-  margin: 15px;
-}
-
-.navbar-mobile .dropdown ul {
-  position: static;
-  display: none;
-  margin: 10px 20px;
-  padding: 10px 0;
-  z-index: 99;
-  opacity: 1;
-  visibility: visible;
-  background: #fff;
-  box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
-}
-
-.navbar-mobile .dropdown ul li {
-  min-width: 200px;
-}
-
-.navbar-mobile .dropdown ul a {
-  padding: 10px 20px;
-}
-
-.navbar-mobile .dropdown ul a i {
-  font-size: 12px;
-}
-
-.navbar-mobile .dropdown ul a:hover, .navbar-mobile .dropdown ul .active:hover, .navbar-mobile .dropdown ul li:hover > a {
-  color: #4154f1;
-}
-
-.navbar-mobile .dropdown > .dropdown-active {
-  display: block;
+  color: #ec1117;
 }
 
 /*--------------------------------------------------------------
@@ -383,7 +347,11 @@ section {
     margin-top: 80px;
   }
   .hero .hero-img img {
-    width: 80%;
+    width: 50%;
+  }
+
+  .hero h1 {
+    font-size: 22px;
   }
 }
 
@@ -392,14 +360,15 @@ section {
     text-align: center;
   }
   .hero h1 {
-    font-size: 32px;
+    font-size: 22px;
   }
   .hero h2 {
     font-size: 24px;
   }
   .hero .hero-img img {
-    width: 100%;
+    width: 50%;
   }
+
 }
 
 /*--------------------------------------------------------------
