@@ -95,24 +95,23 @@
                             Data
                         </div>
                         <div class="cell">
-                            Editar
+                            Entrega
                         </div>
                     </div>
 
-                    @foreach($ordersR as $order)
+                    @foreach($ordersR as $orderR)
                         <div class="row">
-                            <div class="cell" data-title="ID">
-                                {{$order->id}}
+                            <div class="cell" data-title="ID" data-toggle="modal" data-target="#modalViewOCForm" data-id="{{$orderR->id}}" data-pecas="{{$orderR->pecas}}" data-obs="{{$orderR->obs}}">
+                                {{$orderR->id}}
                             </div>
-                            <div class="cell" data-title="Nome">
-                                {{$order->nome}}
+                            <div class="cell" data-title="Preço €" data-toggle="modal" data-target="#modalViewOCForm" data-id="{{$orderR->id}}" data-pecas="{{$orderR->pecas}}" data-obs="{{$orderR->obs}}">
+                                {{$orderR->preco}} €
                             </div>
-                            <div class="cell" data-title="Data">
-                                {{$order->created_at}}
+                            <div class="cell" data-title="Data" data-toggle="modal" data-target="#modalViewOCForm" data-id="{{$orderR->id}}" data-pecas="{{$orderR->pecas}}" data-obs="{{$orderR->obs}}">
+                                {{$orderR->created_at->format('d-m-Y')}}
                             </div>
-                            <div class="cell" data-title="Editar">
-                                <a class="bn39" href="" data-toggle="modal" data-target="#modalEditForm" data-id="{{$order->id}}"
-                                   data-name="{{$order->nome}}" data-number="{{$order->created_at}}"><span class="bn39span">Editar</span></a>
+                            <div class="cell" data-title="Completar">
+                                {{$orderR->updated_at->format('d-m-Y')}}
                             </div>
                         </div>
                     @endforeach
@@ -199,6 +198,31 @@
     </div>
 </div>
 
+<div class="modal fade" id="modalViewOCForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content bg-dark">
+            <div class="modal-header">
+                <button type="button" class="close d-flex align-items-center justify-content-center" data-dismiss="modal" aria-label="Close">
+                    <ion-icon name="close-circle-outline" color="danger" size="large"></ion-icon>
+                </button>
+            </div>
+            <div class="modal-body p-4 p-md-5">
+                <div class="icon d-flex align-items-center justify-content-center">
+                    <ion-icon name="archive" color="danger"></ion-icon>
+                </div>
+                <h3 class="text-center mb-4 text-white">Encomenda <span id="idOrder"></span></h3>
+                <form name="contactFOV" action="/encomendas" class="login-form">
+                    <div class="form-group d-flex">
+                        <textarea type="text" id="viewOrderC" class="form-control rounded-left" placeholder="Preço" readonly></textarea>
+                    </div>
+                    <div class="form-group d-flex">
+                        <textarea type="text" id="viewOrderCOBS" class="form-control rounded-left" placeholder="Preço" readonly></textarea>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div class="modal fade" id="modalCompleteOForm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
