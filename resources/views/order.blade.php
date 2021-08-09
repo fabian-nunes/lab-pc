@@ -73,7 +73,7 @@
     </div>
 
     <div class="d-flex justify-content-center">
-        {!! $orders->links() !!}
+        {{$orders->appends(['ordersR' => $ordersR->currentPage()])->links()}}
     </div>
 
     <br><br><br>
@@ -121,7 +121,7 @@
     </div>
 
     <div class="d-flex justify-content-center">
-        {!! $ordersR->links() !!}
+        {{$ordersR->appends(['orders' => $orders->currentPage()])->links()}}
     </div>
 </section>
 

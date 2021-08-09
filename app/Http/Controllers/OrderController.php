@@ -10,8 +10,8 @@ class OrderController extends Controller
 
     public function index() {
 
-        $orderN = Order::where('estado', 0)->simplePaginate(10);
-        $orderR = Order::where('estado', 1)->simplePaginate(10);
+        $orderN = Order::where('estado', 5)->paginate(1, ['*'], 'orders');
+        $orderR = Order::where('estado', 5)->paginate(1, ['*'], 'orderR');
 
         return view('order', ['orders' => $orderN, 'ordersR' => $orderR]);
     }
