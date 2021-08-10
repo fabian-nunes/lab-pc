@@ -189,10 +189,8 @@
                 </div>
                 <h3 class="text-center mb-4 text-white">Encomenda <span id="idOrder"></span></h3>
                 <form name="contactFOV" action="/encomendas" class="login-form">
-                    <div class="input_fields_wrap">
-                        <div class="form-group d-flex">
-                            <input type="text" id="viewOrder" class="form-control rounded-left" placeholder="Preço" readonly name="mytext[1]" hidden>
-                        </div>
+                    <div class="form-group d-flex">
+                        <textarea type="text" id="viewOrder" class="form-control rounded-left" placeholder="Preço" readonly></textarea>
                     </div>
                 </form>
             </div>
@@ -214,10 +212,8 @@
                 </div>
                 <h3 class="text-center mb-4 text-white">Encomenda <span id="idOrder"></span></h3>
                 <form name="contactFOV" action="/encomendas" class="login-form">
-                    <div class="input_fields_wrap">
-                        <div class="form-group d-flex">
-                            <input type="text" id="viewOrder" class="form-control rounded-left" placeholder="Preço" readonly name="mytext[1]" hidden>
-                        </div>
+                    <div class="form-group d-flex">
+                        <textarea type="text" id="viewOrderC" class="form-control rounded-left" placeholder="Preço" readonly></textarea>
                     </div>
                     <div class="form-group d-flex">
                         <textarea type="text" id="viewOrderCOBS" class="form-control rounded-left" placeholder="Preço" readonly></textarea>
