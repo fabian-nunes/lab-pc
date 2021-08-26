@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\OrderController;
+use App\Http\Controllers\RepairAddController;
+use App\Http\Controllers\RepairController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,6 +30,9 @@ Route::get('/encomendas', [OrderController::class, 'index']);
 Route::post('/encomendas', [OrderController::class, 'store']);
 Route::put('/encomendas/{id}', [OrderController::class, 'complete']);
 Route::delete('/encomendas', [OrderController::class, 'destroy']);
+
+Route::get('/repair', [RepairController::class, 'index']);
+Route::get('/repairAdd', [RepairAddController::class, 'index']);
 
 Route::get('/test', function () {
     return view('test');

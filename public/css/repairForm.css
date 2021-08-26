@@ -1,0 +1,102 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/font-awesome-4.7.0/fonts/fontawesome-webfont.svg') format('truetype');
+}
+
+html,body{
+    height: 100%;
+    margin: 0;
+
+}
+
+.myForm{
+    background-color: rgba(0,0,0,0.5) !important;
+    padding: 15px !important;
+    border-radius: 15px !important;
+    color: white;
+
+}
+
+input, textarea{
+    border-radius:0 15px 15px 0 !important;
+
+}
+input:focus, textarea:focus{
+    outline: none;
+    box-shadow:none !important;
+    border:1px solid #ccc !important;
+
+}
+
+.br-15{
+    border-radius: 15px 0 0 15px !important;
+}
+
+#add_more{
+    color: white !important;
+    background-color: #fa8231 !important;
+    border-radius: 15px !important;
+    border: 0 !important;
+
+}
+#remove_more{
+    color: white !important;
+    background-color: #fc5c65 !important;
+    border-radius: 15px !important;
+    border: 0 !important;
+    display: none;
+
+}
+
+.submit_btn{
+    border-radius: 15px !important;
+    background-color: #95c714 !important;
+    border: 0 !important;
+}
+
+.flipswitch
+{
+    position: relative;
+    background: #fff;
+    width: 120px;
+    height: 40px;
+    -webkit-appearance: initial;
+    border-radius: 15px !important;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    outline:none;
+    font-size: 14px;
+    font-family: Trebuchet, Arial, sans-serif;
+    font-weight: bold;
+    cursor:pointer;
+    border:1px solid #ddd;
+}
+.flipswitch:after
+{
+    position:absolute;
+    top:5%;
+    display:block;
+    line-height:32px;
+    width:45%;
+    height:90%;
+    background:#fff;
+    box-sizing:border-box;
+    text-align:center;
+    transition: all 0.3s ease-in 0s;
+    color:white;
+    border:#888 1px solid;
+    border-radius: 15px !important;
+}
+.flipswitch:after
+{
+    left:2%;
+    background-color: red;
+    content: "\f00d"; /* this is your text. You can also use UTF-8 character codes as I do here */
+    font-family: FontAwesome;
+}
+.flipswitch:checked:after
+{
+    left:53%;
+    background-color: green;
+    content: "\f00c"; /* this is your text. You can also use UTF-8 character codes as I do here */
+    font-family: FontAwesome;
+}

@@ -51,11 +51,13 @@
             </div>
             <div class="col-md-4">
                 <div class="box">
-                    <div class="our-services speedup">
-                        <div class="icon"> <img src="images/repair.png"> </div>
-                        <h4>Reparações</h4>
-                        <p>Gerir Reparações</p>
-                    </div>
+                    <a href="/repair">
+                        <div class="our-services speedup">
+                            <div class="icon"> <img src="images/repair.png"> </div>
+                            <h4>Reparações</h4>
+                            <p>Gerir Reparações</p>
+                        </div>
+                    </a>
                 </div>
             </div>
             <div class="col-md-4">
@@ -64,11 +66,12 @@
                         <div class="our-services database">
                             <div class="icon"> <img src="images/package.png"> </div>
                             <h4>Encomendas</h4>
-                            <p>Gerir Material Encomendado</p>
+                            <p>Gerir Encomendadas</p>
                         </div>
                     </a>
                 </div>
             </div>
+
         </div>
     </div>
 </section>

@@ -2,7 +2,7 @@
 <html lang="pt">
 <head>
     <meta charset="UTF-8">
-    <title>Encomendas</title>
+    <title>Reparações</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
@@ -29,8 +29,8 @@
 
 <section>
 
-    <h1>Encomendas<a href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#modalAddOForm"><button class="bn632-hover bn18 roundC"><i class="fas fa-plus" style="font-size: 30px"></i></button></a></h1>
-    <h3 class="text-center text-white">Por receber</h3>
+    <h1>Reparações<a href="/repairAdd" class="btn btn-default btn-rounded"><button class="bn632-hover bn18 roundC"><i class="fas fa-plus" style="font-size: 30px"></i></button></a></h1>
+    <h3 class="text-center text-white">A realizar</h3>
     <div class="limiter">
         <div class="container-table100">
             <div class="wrap-table100">
@@ -78,7 +78,7 @@
 
     <br><br><br>
 
-    <h3 class="text-center text-white">Recebidas</h3>
+    <h3 class="text-center text-white">Realizadas</h3>
     <div class="limiter">
         <div class="container-table100">
             <div class="wrap-table100">
