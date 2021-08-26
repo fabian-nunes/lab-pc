@@ -37,28 +37,33 @@
                     <h4>Adicionar Reparação</h4>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form name="repairForm" action="/repairAdd" onsubmit="return validateRepair()" method="POST">
                         <div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text br-15"><i class="fas fa-tools"></i></span>
                                 </div>
-                                <input type="text" placeholder="Nome Da Reparação" class="form-control"/>
+                                <input type="text" placeholder="Nome Da Reparação" class="form-control" name="repairName" required/>
                             </div>
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text br-15"><i class="fas fa-user"></i></span>
                                 </div>
-                                <input type="text" placeholder="Nome" class="form-control"/>
+                                <input type="text" placeholder="Nome" class="form-control" name="repairClient" required/>
                                 &emsp;
                                 <div class="input-group-prepend">
                                     <span class="input-group-text br-15"><i class="fas fa-phone-square"></i></span>
                                 </div>
-                                <input type="text" placeholder="Número" class="form-control"/>
+                                <input type="text" placeholder="Número" class="form-control" name="repairNumber" required/>
                             </div>
                         </div>
                         <div id="dynamic_container">
 
+                        </div>
+                        <br>
+                        <div>
+                            <a class="btn btn-secondary btn-sm" id="add_more"><i class="fas fa-plus-circle"></i> Adicionar Peça</a>
+                            <a class="btn btn-secondary btn-sm" id="remove_more"><i class="fas fa-trash-alt"></i> Remover Peça</a>
                         </div>
                         <div>
                             <div class="input-group mt-3">
@@ -74,12 +79,10 @@
                                 <input type="text" placeholder="Preço" class="form-control"/>
                             </div>
                         </div>
+                        <div class="card-footer text-center">
+                            <input type="submit" class="btn btn-success btn-sm submit_btn" value="Submeter">
+                        </div>
                     </form>
-                </div>
-                <div class="card-footer">
-                    <a class="btn btn-secondary btn-sm" id="add_more"><i class="fas fa-plus-circle"></i> Add</a>
-                    <a class="btn btn-secondary btn-sm" id="remove_more"><i class="fas fa-trash-alt"></i> Remove</a>
-                    <button class="btn btn-success btn-sm float-right submit_btn"><i class="fas fa-arrow-alt-circle-right"></i> Submit</button>
                 </div>
             </div>
         </div>
@@ -110,5 +113,5 @@
 <script type="text/javascript" src="js/modal.js"></script>
 <script type="text/javascript" src="js/dynamicInput.js"></script>
 <script type="text/javascript" src="js/repairForm.js"></script>
-
+<script type="text/javascript" src="js/repairFormInput.js"></script>
 </html>
