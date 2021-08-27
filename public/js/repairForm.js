@@ -1,15 +1,15 @@
-var i=0;
+var peca=0;
 $(document).ready(function(){
     $('#add_more').on('click', function(){
 
-        i++;
-        var html ='<div id="append_no_'+i+'" class="animated bounceInLeft">'+
+        peca++;
+        var html ='<div id="append_no_'+peca+'" class="animated bounceInLeft">'+
             '<div class="input-group mt-3">'+
             '<div class="input-group-prepend">'+
             '<span class="input-group-text br-15">'+
             '<i class="fas fa-box"></i></span>'+
             '</div>'+
-            '<input type="text" placeholder="Peça Nº'+i+'"  class="form-control"/>'+ '&emsp;' + '<input type="checkbox" class="flipswitch mt-1"/>'+
+            '<input type="text" placeholder="Peça Nº'+peca+'"  id="Peca_'+peca+'"  class="form-control" required/>'+ '&emsp;' + '<input type="checkbox"  id="PecaO_'+peca+'" class="flipswitch mt-1"/>'+
             '</div></div>';
 
         $('#dynamic_container').append(html);
@@ -20,15 +20,15 @@ $(document).ready(function(){
 
     $('#remove_more').on('click', function(){
 
-        $('#append_no_'+i).removeClass('bounceInLeft').addClass('bounceOutRight')
+        $('#append_no_'+peca).removeClass('bounceInLeft').addClass('bounceOutRight')
             .fadeOut(function(){
                 $(this).remove();
             });
-        i--;
-        if(i==0){
+        peca--;
+        if(peca==0){
             $('#remove_more').fadeOut(function(){
                 $(this).hide()
-            });;
+            });
         }
 
     });

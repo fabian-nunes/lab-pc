@@ -33,6 +33,8 @@ Route::delete('/encomendas', [OrderController::class, 'destroy']);
 
 Route::get('/repair', [RepairController::class, 'index']);
 Route::get('/repairAdd', [RepairAddController::class, 'index']);
+Route::post('/repairAdd', [RepairAddController::class, 'store']);
+
 
 Route::get('/test', function () {
     return view('test');

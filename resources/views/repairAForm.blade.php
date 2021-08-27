@@ -38,6 +38,7 @@
                 </div>
                 <div class="card-body">
                     <form name="repairForm" action="/repairAdd" onsubmit="return validateRepair()" method="POST">
+                        @csrf
                         <div>
                             <div class="input-group">
                                 <div class="input-group-prepend">
@@ -70,16 +71,17 @@
                                 <div class="input-group-prepend">
                                     <span class="input-group-text br-15"><i class="fas fa-pen"></i></span>
                                 </div>
-                                <textarea type="text" placeholder="Observações" class="form-control"></textarea>
+                                <textarea type="text" placeholder="Observações" name="repairObs" class="form-control"></textarea>
                             </div>
                             <div class="input-group mt-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text br-15"><i class="fas fa-euro-sign"></i></span>
                                 </div>
-                                <input type="text" placeholder="Preço" class="form-control"/>
+                                <input type="text" placeholder="Preço" name="repairPrice" class="form-control"/>
                             </div>
                         </div>
                         <div class="card-footer text-center">
+                            <input type="text" name="pecas" id="pecas" hidden>
                             <input type="submit" class="btn btn-success btn-sm submit_btn" value="Submeter">
                         </div>
                     </form>
